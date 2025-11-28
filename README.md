@@ -20,4 +20,4 @@ it should look something like this (but your keyboard names will be different to
 (please note that you need the python3-evdev package)
 
 on windows, install python and just double click the file.
-OR use the autohotkey script here: https://gist.github.com/777777771/eff2044a94d99e6aa3302f8dbafbaad7
+OR use the autohotkey script here: https://gist.github.com/2x74/eff2044a94d99e6aa3302f8dbafbaad7
