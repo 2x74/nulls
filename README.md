@@ -15,3 +15,5 @@ This is an example of what cancels out movement:
 What this program does, is prevent this by reading the last key pressed. So, instead of movement being cancelled out when you hold both A and D, it resorts to A if A was last pressed, and vice versa. This increases gain/efficiency & sync while bhopping, and can also be used as something similar to snap tap on Razer keyboards.
 
 The program also includes a W-release toggle, for prestrafes.
+
+This is a Linux only program (for now)
