@@ -1,5 +1,7 @@
 # Explanation
+
 When you're in games such as Roblox or Counter-Strike, the input of keys are handled as last-key-wins (i.e. holding both A and D at the same time cancels both out).
+
 ---------------------------------------------------------------------------------------------------------------------------------------
 This is an example of what cancels out movement:
 
