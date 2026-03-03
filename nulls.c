@@ -134,19 +134,6 @@ static void passthrough(struct input_event *ev) {
 
 /* -- The actual logic -- */
 
-/*
- * State tracking:
- *   *_held   = physical key is currently pressed
- *   *_active = key is currently being sent to the game
- *
- * Priority rules:
- *   Horizontal (A/D): last pressed wins. On release, other reactivates if still held.
- *   Vertical   (W/S): last pressed wins. On release, other reactivates if still held.
- *   Space:            releases W if active (W-tap/nulls), then sends space normally.
- *   INSERT:           toggles W-release on space (default: on).
- *   F7:               clean exit.
- */
-
 static int w_release_enabled = 1;
 
 static void handle_event(struct input_event *ev,
@@ -177,7 +164,7 @@ static void handle_event(struct input_event *ev,
         return;
     }
 
-    /* --- Movement + space: no repeats --- */
+    /* --- Movement + space --- */
     int is_movement = (code == KEY_W || code == KEY_A ||
                        code == KEY_S || code == KEY_D ||
                        code == KEY_SPACE);
@@ -229,7 +216,7 @@ static void handle_event(struct input_event *ev,
         emit(EV_SYN, SYN_REPORT, 0);
     }
     else if (code == KEY_SPACE) {
-        /* W-release on space */
+        /* W-release */
         if (val == 1 && w_release_enabled && *w_active) {
             emit(EV_KEY, KEY_W, 0); *w_active = 0;
             emit(EV_SYN, SYN_REPORT, 0);
@@ -299,7 +286,7 @@ int main(void) {
         }
     }
 
-    /* Clean up — release any keys still active */
+    /* Release any keys still active */
     if (w_active) { emit(EV_KEY, KEY_W, 0); emit(EV_SYN, SYN_REPORT, 0); }
     if (s_active) { emit(EV_KEY, KEY_S, 0); emit(EV_SYN, SYN_REPORT, 0); }
     if (a_active) { emit(EV_KEY, KEY_A, 0); emit(EV_SYN, SYN_REPORT, 0); }
