@@ -16,4 +16,4 @@ What this program does, is prevent this by reading the last key pressed. So, ins
 
 The program also includes a W-release toggle, for prestrafes.
 
-This is a Linux only program (for now)
+This is a Linux only program.
